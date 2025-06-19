@@ -1,3 +1,6 @@
+
+# > Краткую версию файла смотри здесь - [README-summary.md](README-summary.md).
+
 # CSV Processor
 
 A Python command-line tool for processing CSV files.  

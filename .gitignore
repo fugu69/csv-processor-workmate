@@ -5,3 +5,5 @@ project_plan.txt
 __pycache__/
 
 .pytest_cache/
+
+.coverage
