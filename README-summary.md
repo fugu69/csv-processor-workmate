@@ -23,7 +23,7 @@ python main.py --file products.csv --where "rating>4.5"
 ```
 ![товары с рейтингом выше 4.5](images/filtered.png)
 
-### 📊 Aggregate numeric values
+### 📊 Агрегировать цифровые значения
 ```bash
 python main.py --file products.csv --aggregate "price=avg"
 python main.py --file products.csv --aggregate "rating=max"
