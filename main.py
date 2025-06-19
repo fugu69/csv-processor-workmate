@@ -1,5 +1,6 @@
 import csv
 from tabulate import tabulate
+from parser import parse_args
 
 def read_csv(file_path):
     with open(file_path, mode='r', encoding='utf-8') as f:
@@ -8,8 +9,8 @@ def read_csv(file_path):
     return data
 
 def main():
-    file_path = "products.csv"  # TO-DO: make it dynamic later
-    data = read_csv(file_path)
+    args = parse_args()
+    data = read_csv(args.file)
     print(tabulate(data, headers="keys", tablefmt="grid"))
 
 if __name__ == "__main__":

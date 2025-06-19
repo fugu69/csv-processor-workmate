@@ -1,3 +1,5 @@
 venv/
 
 project_plan.txt
+
+__pycache__/
