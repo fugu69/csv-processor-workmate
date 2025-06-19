@@ -18,3 +18,19 @@ def compare(a, b, operator):
         return a <= b
     else:
         raise ValueError("Unsupported operator")
+
+def parse_aggregate(agg_arg):
+    if "=" not in agg_arg:
+        raise ValueError("Aggregate format must be column=operation")
+    column, operation = agg_arg.split("=")
+    return column.strip(), operation.strip()
+
+def aggregate(values, operation):
+    if operation == "avg":
+        return sum(values) / len(values) if values else 0
+    elif operation == "min":
+        return min(values) if values else None
+    elif operation == "max":
+        return max(values) if values else None
+    else:
+        raise ValueError(f"Unsupported aggregate operation: {operation}")

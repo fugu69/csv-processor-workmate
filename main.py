@@ -1,7 +1,7 @@
 import csv
 from tabulate import tabulate
 from parser import parse_args
-from utils import parse_condition, compare
+from utils import parse_condition, compare, parse_aggregate, aggregate
 
 def read_csv(file_path):
     with open(file_path, mode='r', encoding='utf-8') as f:
@@ -28,7 +28,18 @@ def main():
 
     if args.where:
         data = filter_data(data, args.where)
-    print(tabulate(data, headers="keys", tablefmt="grid"))
+
+    if args.aggregate:
+        column, operation = parse_aggregate(args.aggregate)
+        try:
+            values = [float(row[column]) for row in data]
+        except ValueError:
+            print(f"Aggregation only works with numeric columns. '{column}' is not numeric.")
+            return
+        result = aggregate(values, operation)
+        print(f"{operation.upper()} of {column}: {result}")
+    else:
+        print(tabulate(data, headers="keys", tablefmt="grid"))
 
 if __name__ == "__main__":
     main()
