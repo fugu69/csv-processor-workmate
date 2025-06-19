@@ -34,3 +34,12 @@ def aggregate(values, operation):
         return max(values) if values else None
     else:
         raise ValueError(f"Unsupported aggregate operation: {operation}")
+
+def parse_order_by(order_by_arg):
+    if "=" not in order_by_arg:
+        raise ValueError("Order-by format must be column=asc|desc")
+    column, direction = order_by_arg.split("=")
+    direction = direction.lower()
+    if direction not in ("asc", "desc"):
+        raise ValueError("Order direction must be 'asc' or 'desc'")
+    return column.strip(), direction
