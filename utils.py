@@ -26,14 +26,18 @@ def parse_aggregate(agg_arg):
     return column.strip(), operation.strip()
 
 def aggregate(values, operation):
+    if not values:
+        raise ValueError("Cannot aggregate empty list.")
+
     if operation == "avg":
-        return sum(values) / len(values) if values else 0
+        return sum(values) / len(values)
     elif operation == "min":
-        return min(values) if values else None
+        return min(values)
     elif operation == "max":
-        return max(values) if values else None
+        return max(values)
     else:
-        raise ValueError(f"Unsupported aggregate operation: {operation}")
+        raise ValueError(f"Unsupported aggregation operation: {operation}")
+
 
 def parse_order_by(order_by_arg):
     if "=" not in order_by_arg:
