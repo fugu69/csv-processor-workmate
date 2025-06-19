@@ -51,5 +51,11 @@ python main.py --file products.csv \
 pytest
 ```
 ![результат тестов](images/pytest.png)
+
+
+```bash
+coverage run -m pytest
+coverage report
+```
 ![процент покрытия тестами](images/test_coverage.png)
 
